@@ -49,6 +49,9 @@ inputElement.addEventListener('keydown', function(event) {
                 case 'github':
                     window.location.href = 'https://github.com/porterfurlongku';
                     break;
+                case 'game':
+                    document.getElementById('gameContainer').style.display = 'block';
+                    break;
                 default:
                     outputElement.innerHTML += `<div>Unknown command: ${cmd}</div>`;
                     break;
