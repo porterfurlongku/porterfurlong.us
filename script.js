@@ -2,7 +2,10 @@ const inputElement = document.querySelector('.cmd-input');
 const outputElement = document.querySelector('.output');
 
 let messageIndex = 0;
+let currentState = 'DEFAULT';
+
 const welcomeMessage = `
+******************************************************
 $$___$$___________$$__________________________________
 $$___$$___________$$__________________________________
 $$___$$__$$$$_____$$_____$$$$____$$$$___$$$$$$___$$$$_
@@ -12,6 +15,7 @@ $$_$_$$_$$$$$$____$$____$$______$$__$$__$$_$_$$_$$$$$$
 _$$_$$__$$________$$____$$______$$__$$__$$_$_$$_$$____
 _$$_$$__$$________$$____$$__$$__$$__$$__$$_$_$$_$$____
 _$$_$$___$$$$___$$$$$$___$$$$____$$$$___$$___$$__$$$$_
+******************************************************
 `;
 
 
@@ -28,34 +32,52 @@ function typeMessage() {
 }
 inputElement.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        const cmd = inputElement.value.trim();
+        const cmd = inputElement.value.trim().toLowerCase();
 
-        switch (cmd) {
-            case 'clear':
-                window.location.href = 'index.html';
-                break;
-            case 'resume':
-                window.location.href = '/about';
-                break;
-            // Add more cases as needed for other commands
-            case 'help':
-                displayHelp();
-                break;
-            case 'github':
-                window.location.href = 'https://github.com/porterfurlongku';
-                break;
-            default:
-                outputElement.innerHTML += `<div>Unknown command: ${cmd}</div>`;
-                break;
+        if (currentState === 'DEFAULT') {
+            switch (cmd) {
+                case 'clear':
+                    clearTerminal();;
+                    break;
+                case 'resume':
+                    currentState = 'RESUME_PROMPT';
+                    outputElement.innerHTML += `<div>would you like to download my resume [y/n]</div>`;
+                    break;
+                case 'help':
+                    displayHelp();
+                    break;
+                case 'github':
+                    window.location.href = 'https://github.com/porterfurlongku';
+                    break;
+                default:
+                    outputElement.innerHTML += `<div>Unknown command: ${cmd}</div>`;
+                    break;
+            }
+        } else if (currentState === 'RESUME_PROMPT') {
+            switch (cmd) {
+                case 'y':
+                    currentState = 'DEFAULT';
+                    outputElement.innerHTML += `<div>Downloading...</div>`;
+                    downloadResume();
+                    break;
+                case 'n':
+                    currentState = 'DEFAULT';
+                    outputElement.innerHTML += `<div>Resume will not download.</div>`;
+                    break;
+                default:
+                    outputElement.innerHTML += `<div>Please respond with 'y' or 'n'.</div>`;
+                    break;
+            }
         }
 
         inputElement.value = '';
     }
 });
+
 function displayHelp() {
     const commands = [
-        'home - Navigates to the home page',
-        'about - Navigates to the about page',
+        'clear  - Clears window/Navigates to the home page',
+        'resume - Prompts resume download in PDF format',
         'github - Navigates to my Github profile'
         // Add more commands as needed
     ];
@@ -65,3 +87,10 @@ function displayHelp() {
         outputElement.innerHTML += `<div>${command}</div>`;
     });
 }
+function downloadResume() {
+    window.location.href = "downloadables/outdated_Resume_Spring_22_Porter_Furlong.pdf"; // Replace with your resume's path
+}
+function clearTerminal() {
+    outputElement.innerHTML = welcomeMessage;
+}
+
