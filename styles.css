@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #00FF00;
+}
+
+.terminal {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.input-line {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.prefix {
+    margin-right: 5px;
+}
+
+.cmd-input {
+    width: 100%;
+    padding: 2px 5px;
+    background-color: #000;
+    color: #00FF00;
+    border: none;
+    outline: none;
+}
+.output div {
+    margin-bottom: 2px;
+    padding: 2px 4px;
+    word-wrap: break-word;
+}
+
+.output div:nth-child(even) {
+    background-color: rgba(0, 255, 0, 0.1);
+}
