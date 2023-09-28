@@ -55,9 +55,11 @@ function destroyAscii(projectile, asciiLine) {
     projectile.destroy();
     asciiLine.destroy();
 }
+const BOX_TOP = 500;  // Set this to the top y-coordinate of your box
+const BOX_BOTTOM = 550;  // Set this to the bottom y-coordinate of your box
 
 function update() {
-    // Player movement
+    // Player horizontal movement
     if (cursors.left.isDown) {
         player.setVelocityX(-160);
     } else if (cursors.right.isDown) {
@@ -66,11 +68,28 @@ function update() {
         player.setVelocityX(0);
     }
 
+    // Player vertical movement
+    if (cursors.up.isDown) {
+        player.setVelocityY(-160);
+    } else if (cursors.down.isDown) {
+        player.setVelocityY(160);
+    } else {
+        player.setVelocityY(0);
+    }
+
+    // Constrain player within the box
+    if (player.y < BOX_TOP) {
+        player.y = BOX_TOP;
+    } else if (player.y > BOX_BOTTOM) {
+        player.y = BOX_BOTTOM;
+    }
+
     // Shooting (on space key)
     if (cursors.space.isDown) {
         shootProjectile(this);
     }
 }
+
 
 function shootProjectile(scene) {
     // Create a projectile and add to the projectiles group
