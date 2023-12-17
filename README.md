@@ -1,2 +1,2 @@
 # porterfurlong.us
-personal webite
+personal website
