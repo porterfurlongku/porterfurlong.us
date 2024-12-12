@@ -41,16 +41,13 @@ inputElement.addEventListener('keydown', function(event) {
                     break;
                 case 'resume':
                     currentState = 'RESUME_PROMPT';
-                    outputElement.innerHTML += `<div>would you like to download my resume [y/n]</div>`;
+                    outputElement.innerHTML += `<div>Would you like to download my resume? [y/n]</div>`;
                     break;
                 case 'help':
                     displayHelp();
                     break;
                 case 'github':
                     window.location.href = 'https://github.com/porterfurlongku';
-                    break;
-                case 'game':
-                    document.getElementById('gameContainer').style.display = 'block';
                     break;
                 default:
                     outputElement.innerHTML += `<div>Unknown command: ${cmd}</div>`;
@@ -91,7 +88,7 @@ function displayHelp() {
     });
 }
 function downloadResume() {
-    window.location.href = "downloadables/outdated_Resume_Spring_22_Porter_Furlong.pdf"; // Replace with your resume's path
+    window.location.href = "downloadables\Porter Furlong Resume - Winter 2024.docx.pdf"; // Replace with your resume's path
 }
 function clearTerminal() {
     outputElement.innerHTML = welcomeMessage;
