@@ -88,7 +88,7 @@ function displayHelp() {
     });
 }
 function downloadResume() {
-    window.location.href = "downloadables\Porter Furlong Resume - Winter 2024.docx.pdf"; // Replace with your resume's path
+    window.location.href = "downloadables\resume_Porter_Furlong_2024_Winter.pdf"; // Replace with your resume's path
 }
 function clearTerminal() {
     outputElement.innerHTML = welcomeMessage;
