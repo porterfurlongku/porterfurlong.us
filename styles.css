@@ -1,40 +1,168 @@
+:root {
+    --terminal-bg: #2E3440;
+    --terminal-text: #D8DEE9;
+    --terminal-prompt: #88C0D0;
+    --terminal-selection: rgba(136, 192, 208, 0.3);
+}
+
 body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Courier New', monospace;
-    background-color: #000;
-    color: #00FF00;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    background-color: #1f2227;
+    color: var(--terminal-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .terminal {
-    width: 80%;
-    max-width: 800px;
-    margin: 50px auto;
+    width: 90%;
+    max-width: 900px;
+    background-color: var(--terminal-bg);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.terminal-header {
+    background-color: #353b48;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-button.close { background-color: #ff5f56; }
+.terminal-button.minimize { background-color: #ffbd2e; }
+.terminal-button.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.terminal-content {
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a var(--terminal-bg);
+}
+
+.terminal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+    background: var(--terminal-bg);
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 4px;
 }
 
 .input-line {
     display: flex;
     margin-bottom: 4px;
+    align-items: center;
 }
 
 .prefix {
-    margin-right: 5px;
+    color: var(--terminal-prompt);
+    margin-right: 10px;
+    font-weight: bold;
 }
 
 .cmd-input {
-    width: 100%;
-    padding: 2px 5px;
-    background-color: #000;
-    color: #00FF00;
+    flex: 1;
+    background-color: transparent;
+    color: var(--terminal-text);
     border: none;
     outline: none;
-}
-.output div {
-    margin-bottom: 2px;
-    padding: 2px 4px;
-    word-wrap: break-word;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
 }
 
-.output div:nth-child(even) {
-    background-color: rgba(0, 255, 0, 0.1);
+.cmd-input::selection {
+    background-color: var(--terminal-selection);
+}
+
+.output div {
+    margin-bottom: 6px;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideIn 0.2s ease-out forwards;
+}
+
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--terminal-prompt), #81A1C1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+}
+
+.loading .loading-indicator {
+    transform: scaleX(1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .terminal {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .terminal-content {
+        height: 70vh;
+    }
+    
+    .terminal-title {
+        font-size: 12px;
+    }
 }

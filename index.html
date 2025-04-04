@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Line Interface Website</title>
+    <meta name="description" content="Interactive command-line interface portfolio website">
+    <meta name="keywords" content="CLI, portfolio, terminal, interactive">
+    <meta name="author" content="Porter Furlong">
+    <title>Porter Furlong | Terminal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RENGRjE0NDY5NzM5MTFFQTk0QjZCMjY5NjE1MTkwMzEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RENGRjE0NDc5NzM5MTFFQTk0QjZCMjY5NjE1MTkwMzEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEQ0ZGMTQ0NDk3MzkxMUVBOTRCNkIyNjk2MTUxOTAzMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEQ0ZGMTQ0NTk3MzkxMUVBOTRCNkIyNjk2MTUxOTAzMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtEw0gUAAADiSURBVHja7JZNCsIwEIWnxZ/qxpV4Bg/hQbyHK8GlC8GlHsKTeA4X7kTdKP6gMQ/eQApNJ4kWuvCDj5JMH69JJjNKSukwpQ0cAW+Qz0kQvU2zR+yCO+uzDHaAQ+AAOAaegDPgzOcQzQxkwBXwfkJOwVKzZgk8AjfABZADPWAPOPEtQQ24A+6BC+AZaAMHwDFQAXtAG7gGzoEn4A7YB46AKtADOsA1cAY8AnfAPnAM1IAe0AWugVPgEbgH9oAjoA70gR5wA5wAj8ADsAscAnWgD/SBW+AYeAIegF3gABgAfeBWCPEROxV/AgwA8PaR0Q2DSGQAAAAASUVORK5CYII=">
 </head>
 <body>
     <div class="terminal">
-        <div class="output"></div>
-        <div class="input-line">
-            <div class="prefix">$</div>
-            <input type="text" class="cmd-input">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
+            </div>
+            <div class="terminal-title">terminal@portfolio</div>
+        </div>
+        <div class="terminal-content">
+            <div class="output"></div>
+            <div class="input-line">
+                <div class="prefix">$</div>
+                <input type="text" class="cmd-input" aria-label="Terminal input" autocomplete="off" spellcheck="false">
+            </div>
         </div>
     </div>
+    <div class="loading-indicator"></div>
     <script src="script.js"></script>
-
 </body>
 </html>
