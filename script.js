@@ -9,8 +9,7 @@ let commandHistory = [];
 let historyIndex = -1;
 let typing = false;
 
-const welcomeMessage = `
-******************************************************
+const welcomeMessage = `******************************************************
 $$___$$___________$$__________________________________
 $$___$$___________$$__________________________________
 $$___$$__$$$$_____$$_____$$$$____$$$$___$$$$$$___$$$$_
@@ -20,10 +19,8 @@ $$_$_$$_$$$$$$____$$____$$______$$__$$__$$_$_$$_$$$$$$
 _$$_$$__$$________$$____$$______$$__$$__$$_$_$$_$$____
 _$$_$$__$$________$$____$$__$$__$$__$$__$$_$_$$_$$____
 _$$_$$___$$$$___$$$$$$___$$$$____$$$$___$$___$$__$$$$_
-******************************************************
-
-Welcome to my interactive terminal portfolio! Type 'help' to see available commands.
-`;
+******************************************************\n\n\n\n\n\n\n\n
+Welcome to my interactive terminal portfolio! Type 'help' to see available commands.`;
 
 const commands = {
     help: {
@@ -68,10 +65,15 @@ function typeMessage(message = welcomeMessage, callback = null) {
     if (typing) return;
     typing = true;
     let index = 0;
+    outputElement.innerHTML = ''; // Clear existing content
     
     function type() {
         if (index < message.length) {
-            outputElement.innerHTML += message.charAt(index);
+            if (message[index] === '\n') {
+                outputElement.innerHTML += '<br>';
+            } else {
+                outputElement.innerHTML += message[index];
+            }
             outputElement.scrollTop = outputElement.scrollHeight;
             index++;
             setTimeout(type, Math.random() * 10 + 5);
@@ -217,7 +219,6 @@ function downloadResume() {
 
 function clearTerminal() {
     outputElement.innerHTML = '';
-    typeMessage(welcomeMessage);
 }
 
 // Prevent losing focus from input
