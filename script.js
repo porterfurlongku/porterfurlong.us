@@ -117,6 +117,10 @@ inputElement.addEventListener('keydown', function(event) {
         historyIndex = commandHistory.length;
         
         if (currentState === 'DEFAULT') {
+            if (cmd === 'map') {
+                window.location.href = 'https://map.porterfurlong.us';
+                return;
+            }
             if (commands[cmd]) {
                 commands[cmd].action();
             } else {
