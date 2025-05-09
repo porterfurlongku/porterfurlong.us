@@ -194,16 +194,9 @@ Skills:
 
 function displayProjects() {
     const projects = `
-Featured Projects:
-1. Project Name 1
-   - Description of the project
-   - Technologies used
-   - Link to demo/repository
+Check out my GitHub!
 
-2. Project Name 2
-   - Description of the project
-   - Technologies used
-   - Link to demo/repository
+Tip: type 'github'
 `;
     typeMessage(projects);
 }
