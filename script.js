@@ -211,8 +211,8 @@ Featured Projects:
 function displayContact() {
     addOutput(`
 Contact Information:
-• Email: your.email@example.com
-• LinkedIn: linkedin.com/in/yourprofile
+• Email: porterfurlong@gmail.com
+• LinkedIn: www.linkedin.com/in/porter-furlong-678159224/
 • GitHub: github.com/porterfurlongku
 `);
 }
